@@ -1,13 +1,21 @@
 const express = require("express")
+require("express-async-errors")
 const connectDb = require("./db/connect")
 const stores = require("./routes/stores")
-
 const app = express()
 require('dotenv').config()
 
 app.use(express.json())
 
 app.use('/api/v1/stores', stores)
+
+const errorHandling = (err, req, res, next) => {
+    res.status(err.statusCode).json({
+      msg: err.message,
+      success: false,
+    });
+};
+app.use(errorHandling);
 
 PORT = 5000 || process.env.PORT
 

@@ -4,6 +4,7 @@ const { getAllProducts, createProduct,
         deleteProduct, getSingleProduct, updateProduct } = require('../controllers/stores')
 
 router.route('/').get(getAllProducts).post(createProduct)
-router.route('/:id').get(getSingleProduct).delete(deleteProduct).put(updateProduct)
+router.route('/:id').get(getSingleProduct).delete(deleteProduct)
+router.route('/:name').put(updateProduct)
 
 module.exports= router
