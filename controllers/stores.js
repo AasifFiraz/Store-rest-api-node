@@ -10,9 +10,9 @@ const getAllProducts = async(req, res) => {
         res.status(200).json({products})
 }
 
-const createProduct = async(req, res) => {
+const createProduct = async (req, res) => {
     
-    isExistingProduct = await Store.findOne({name: req.body.name})
+    const isExistingProduct = await Store.findOne({name: req.body.name})
     if(isExistingProduct){
         throw new errorHandler("Product is already available", 409)
     }
