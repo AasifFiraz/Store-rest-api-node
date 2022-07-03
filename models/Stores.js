@@ -11,6 +11,21 @@ const StoresSchema = new Schema({
         type: Number,
         required: [true, 'Enter the product price']
     },
+    feautured: {
+        type: Boolean,
+        default: false,
+    },
+    rating: {
+        type: Number,
+        default: 4.5,
+    },
+    company: {
+        type: String,
+        enum: {
+            values: ['ikea', 'liddy', 'caressa', 'marcos'],
+            message: '{VALUE} is not supported'
+        }
+    }
 },
 {timestamps: true}
 
